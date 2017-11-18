@@ -9,6 +9,8 @@ const app = express();
 
 //graphql
 const schema = require('./schema')
+const MovieSchema = require('./models/movie')
+
 
 app.get('/', (req, res) => {
     res.send({ message: 'Hello bogota.js' })
@@ -16,7 +18,10 @@ app.get('/', (req, res) => {
 
 app.use('/graphql', bodyParser.json(),
     graphqlExpress({
-        schema
+        schema,
+        context: {
+            MovieSchema
+        }
     })
 )
 
