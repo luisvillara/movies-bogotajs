@@ -4,7 +4,7 @@
   "description": "backend of movies application, using nodejs, graphql, mongodb and docker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
     "mongodb"
   ],
   "author": "nicolas restrepo",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
