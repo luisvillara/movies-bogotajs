@@ -1,0 +1,23 @@
+{
+  "name": "movies-bogotajs",
+  "version": "1.0.0",
+  "description": "backend of movies application, using nodejs, graphql, mongodb and docker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicolasrestrepo"
+  },
+  "keywords": [
+    "graphql",
+    "node",
+    "mongodb"
+  ],
+  "author": "nicolas restrepo",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
