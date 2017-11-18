@@ -41,20 +41,24 @@ const typeDefs = `
 `
     const resolvers = {
         Query: {
-            allMovies: () => {
-                return [{
-                    id: 1,
-                    name: "prueba name",
-                    year: "2017",
-                    description: "description movie",
-                    trailerUrl: "trailer url test",
-                    imageUrl: "imgUrl trailer",
-                    gender: "Fiction",
-                    status: 4
-                }]
+            allMovies: async (parent, args, {MovieSchema}) => {
+               const response = await MovieSchema.find()
+               return response;
+            },
+            movieById: async (parent, args, {MovieSchema}) => {            
+              const response = await MovieSchema.findOne({_id: args.id})
+              return response;
             }
-        }    
-    }
+        },
+      Mutation:{
+          registerMovie: async (parent, args, {MovieSchema}) => {
+             const response = await  MovieSchema.create(args.input)
+             return response;
+          }
+      }      
+
+}
+
 
 const schema = makeExecutableSchema({
     typeDefs,
