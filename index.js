@@ -1,8 +1,10 @@
 const express = require('express');
 const { graphqlExpress, graphiqlExpress } = require('graphql-server-express');
-const config = require('./config');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
+const config = require('./config');
 const app = express();
 
 //graphql
@@ -23,8 +25,14 @@ app.use('/graphiql',
        endpointURL: '/graphql'
     }))
 
-app.listen(config.port, () => {
-    console.log('server runing in port', config.port)
-})
+mongoose.connect('mongodb://localhost:27017/movies', {useMongoClient: true})
+    .then(() => {
+        console.log('conexion a la base de datos exitosa');
+        app.listen(config.port, () => {
+            console.log('server runing in port', config.port)
+        })
+    })
+
+
 
 
